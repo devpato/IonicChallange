@@ -1,17 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Assigment 2</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h3>Enter the right code</h3>
+        <p *ngIf="!didWin()">Tap Twice or press 4 times</p>
+        <p *ngIf="didWin()">You Won!</p>
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item>
+          <p>Tapped: {{tapped}}</p>
+      </ion-item>
+        <ion-item>
+          <p>Pressed:{{pressed}}</p>
+        </ion-item>
+      </ion-list>
+      <app-reset (didReset)="onDidReset($event)"></app-reset>
+      <ion-row>
+        <ion-col style="background-color: lightgreen" text-center (tap)="onTap()">Tap here</ion-col>
+        <ion-col style="background-color: lightgreen" text-center (press)="onPress()">Press here</ion-col>
+      </ion-row>
+  </ion-grid>
 </ion-content>
